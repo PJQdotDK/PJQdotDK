@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://btp.ed1:44305/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://btp.ed1:44305/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://btp.ed1:44305/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://btp.ed1:44305/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://btp.ed1:44305/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zui_aktart" xml:lang="da" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="readonlyType" sap:label="CDS view til ZWF_AKTART" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="kokrs"/>
+                    <PropertyRef Name="int_aktart"/>
+                </Key>
+                <Property Name="kokrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="kokrsname" sap:label="CO-område"/>
+                <Property Name="int_aktart" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:label="Intern aktivitetsart" sap:quickinfo="Intern aktivitetsart."/>
+                <Property Name="aktart" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Aktivitetsart"/>
+                <Property Name="datab" Type="Edm.DateTimeOffset" Precision="7" sap:label="Dato gyldig fra"/>
+                <Property Name="datbi" Type="Edm.DateTimeOffset" Precision="7" sap:label="Dato gyldig til"/>
+                <Property Name="betegnelse" Type="Edm.String" MaxLength="20" sap:label="Betegnelse" sap:quickinfo="Generel betegnelse"/>
+                <Property Name="beskrivelse" Type="Edm.String" MaxLength="40" sap:label="Beskrivelse"/>
+                <Property Name="aktivitetsenhed" Type="Edm.String" MaxLength="3" sap:text="enhed" sap:label="Aktivitetsenhed" sap:semantics="unit-of-measure"/>
+                <Property Name="omkostningsstedsarter" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="OmkostnStedsarter" sap:quickinfo="tilladte omkostningsstedsarter"/>
+                <Property Name="aktivitetsartstype" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Aktivitetsartype" sap:quickinfo="Aktivitetsartstype"/>
+                <Property Name="afregningsomkostningsart" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Afregningsomk.art" sap:quickinfo="Afregningsomkostningsart"/>
+                <Property Name="tarifindikator" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Tarifindikator" sap:quickinfo="Tarifindikator til fastsættelse af afregningsprisen"/>
+                <Property Name="fkt_mgd_def" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Fkt. mgd. defineret" sap:quickinfo="Indikator: Manuel tilbagemelding af faktisk mængde"/>
+                <Property Name="gennemsnitstarif" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Gennemsnitstarif" sap:quickinfo="Tarifdeterminering med periodisk gennemsnitsdannelse"/>
+                <Property Name="pl_mgd_def" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Planl. mængde def." sap:quickinfo="IN: Planlagt mængde defineret manuelt"/>
+                <Property Name="forudford_faste_omk" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Forudfd. fstOmk" sap:quickinfo="IN: Aktivitetsart/forretnProces med forudfordelte faste omk."/>
+                <Property Name="aktartstype_fkt" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="AktivitArtType fkt." sap:quickinfo="Afvigende aktivitetsartstype til fkt.-behandling"/>
+                <Property Name="tarifindk_fkt" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Tarifindikator, fkt." sap:quickinfo="Tarif-IN for fkt.-afregningspris"/>
+                <Property Name="sp_indk" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Spærreindikator"/>
+                <Property Name="status" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Statuskode" sap:quickinfo="Statuskode for masterdata oprettelse via workflow."/>
+                <Property Name="opr_af" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Bruger" sap:quickinfo="Brugernavn i brugerstamdata"/>
+                <Property Name="opr_dato" Type="Edm.DateTimeOffset" Precision="7" sap:label="Tidsstempel" sap:quickinfo="UTC-tidsstempel i lang form (ÅÅÅÅMMTThhmmssmmmuuun)"/>
+                <Property Name="ret_af" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Bruger" sap:quickinfo="Brugernavn i brugerstamdata"/>
+                <Property Name="ret_dato" Type="Edm.DateTimeOffset" Precision="7" sap:label="Tidsstempel" sap:quickinfo="UTC-tidsstempel i lang form (ÅÅÅÅMMTThhmmssmmmuuun)"/>
+                <Property Name="godk_af" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Bruger" sap:quickinfo="Brugernavn i brugerstamdata"/>
+                <Property Name="godk_dato" Type="Edm.DateTimeOffset" Precision="7" sap:label="Tidsstempel" sap:quickinfo="UTC-tidsstempel i lang form (ÅÅÅÅMMTThhmmssmmmuuun)"/>
+                <Property Name="kokrsname" Type="Edm.String" MaxLength="25" sap:label="Betegnelse" sap:quickinfo="Betegnelse for CO-område"/>
+                <Property Name="enhed" Type="Edm.String" MaxLength="10" sap:label="Tekst til måleenhed" sap:quickinfo="Tekst til måleenhed (maks. 10 tegn)"/>
+            </EntityType>
+            <EntityType Name="UIType" sap:label="Consumption view" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="kokrs"/>
+                    <PropertyRef Name="int_aktart"/>
+                </Key>
+                <Property Name="kokrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="kokrsname" sap:label="CO-område" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="int_aktart" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:label="Intern aktivitetsart" sap:quickinfo="Intern aktivitetsart."/>
+                <Property Name="aktart" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Aktivitetsart"/>
+                <Property Name="datab" Type="Edm.DateTimeOffset" Precision="7" sap:label="Dato gyldig fra"/>
+                <Property Name="datbi" Type="Edm.DateTimeOffset" Precision="7" sap:label="Dato gyldig til" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="betegnelse" Type="Edm.String" MaxLength="20" sap:label="Betegnelse" sap:quickinfo="Generel betegnelse"/>
+                <Property Name="beskrivelse" Type="Edm.String" MaxLength="40" sap:label="Beskrivelse"/>
+                <Property Name="aktivitetsenhed" Type="Edm.String" MaxLength="3" sap:text="enhed" sap:label="Aktivitetsenhed" sap:creatable="false" sap:updatable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="omkostningsstedsarter" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="OmkostnStedsarter" sap:quickinfo="tilladte omkostningsstedsarter"/>
+                <Property Name="aktivitetsartstype" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Aktivitetsartype" sap:quickinfo="Aktivitetsartstype" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="afregningsomkostningsart" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Afregningsomk.art" sap:quickinfo="Afregningsomkostningsart"/>
+                <Property Name="tarifindikator" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Tarifindikator" sap:quickinfo="Tarifindikator til fastsættelse af afregningsprisen" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="fkt_mgd_def" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Fkt. mgd. defineret" sap:quickinfo="Indikator: Manuel tilbagemelding af faktisk mængde"/>
+                <Property Name="gennemsnitstarif" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Gennemsnitstarif" sap:quickinfo="Tarifdeterminering med periodisk gennemsnitsdannelse"/>
+                <Property Name="pl_mgd_def" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Planl. mængde def." sap:quickinfo="IN: Planlagt mængde defineret manuelt"/>
+                <Property Name="forudford_faste_omk" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Forudfd. fstOmk" sap:quickinfo="IN: Aktivitetsart/forretnProces med forudfordelte faste omk."/>
+                <Property Name="aktartstype_fkt" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="AktivitArtType fkt." sap:quickinfo="Afvigende aktivitetsartstype til fkt.-behandling"/>
+                <Property Name="tarifindk_fkt" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Tarifindikator, fkt." sap:quickinfo="Tarif-IN for fkt.-afregningspris"/>
+                <Property Name="sp_indk" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Spærreindikator"/>
+                <Property Name="status" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Statuskode" sap:quickinfo="Statuskode for masterdata oprettelse via workflow."/>
+                <Property Name="opr_af" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Bruger" sap:quickinfo="Brugernavn i brugerstamdata"/>
+                <Property Name="opr_dato" Type="Edm.DateTimeOffset" Precision="7" sap:label="Tidsstempel" sap:quickinfo="UTC-tidsstempel i lang form (ÅÅÅÅMMTThhmmssmmmuuun)"/>
+                <Property Name="ret_af" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Bruger" sap:quickinfo="Brugernavn i brugerstamdata"/>
+                <Property Name="ret_dato" Type="Edm.DateTimeOffset" Precision="7" sap:label="Tidsstempel" sap:quickinfo="UTC-tidsstempel i lang form (ÅÅÅÅMMTThhmmssmmmuuun)"/>
+                <Property Name="godk_af" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Bruger" sap:quickinfo="Brugernavn i brugerstamdata"/>
+                <Property Name="godk_dato" Type="Edm.DateTimeOffset" Precision="7" sap:label="Tidsstempel" sap:quickinfo="UTC-tidsstempel i lang form (ÅÅÅÅMMTThhmmssmmmuuun)"/>
+                <Property Name="kokrsname" Type="Edm.String" MaxLength="25" sap:label="Betegnelse" sap:quickinfo="Betegnelse for CO-område"/>
+                <Property Name="enhed" Type="Edm.String" MaxLength="10" sap:label="Tekst til måleenhed" sap:quickinfo="Tekst til måleenhed (maks. 10 tegn)"/>
+            </EntityType>
+            <EntityContainer Name="cds_zui_aktart_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="readonly" EntityType="cds_zui_aktart.readonlyType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="UI" EntityType="cds_zui_aktart.UIType" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="cds_zui_aktart.cds_zui_aktart_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_aktart.readonlyType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>int_aktart</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://btp.ed1:44305/sap/opu/odata/sap/ZUI_AKTART_V2/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://btp.ed1:44305/sap/opu/odata/sap/ZUI_AKTART_V2/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
