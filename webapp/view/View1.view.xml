@@ -3,14 +3,46 @@
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns="sap.m"
->
+>  
+
     <Shell id="shell">
         <App id="app">
             <pages>
-                <Page id="page" title="{i18n>title}">
-                    <content />
-                </Page>
+                <Page id="page" title="{i18n>title}">                 
+
+                <Image id="_IDGenImage1" 
+                        src="https://www.erclassics.com/media/catalog/product/cache/2/thumbnail/1920x/17f82f742ffe127f42dca9de82fb58b1/m/g/mg-mgb-cabriolet-1965-m7331-039.jpg" 
+                        height="200px" width="200px"/>
+
+                        <Table id="_idTable"
+                            inset="false"
+                            items="{/zui_aktart_v2}">
+                            <columns>
+                                <Column id="_IDGenColumn1">
+                                    <Text id="_IDGenText1" text="IntAktart" />
+                                </Column>
+                                <Column id="_IDGenColumn2">
+                                    <Text id="_IDGenText2" text="Aktart" />
+                                </Column>
+                                <Column id="_IDGenColumn3">
+                                    <Text id="_IDGenText3" text="Beskrivelse" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle" type="Navigation">
+                                    <cells>
+                                        <Text id="_IDGenText4" text="{int_aktart}" wrapping="false" />
+                                        <Text id="_IDGenText5" text="{aktart}" wrapping="false"/>
+                                        <Text id="_IDGenText6" text="{beskrivelse}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                </Page>    
             </pages>
         </App>
     </Shell>
 </mvc:View>
+
+
+
