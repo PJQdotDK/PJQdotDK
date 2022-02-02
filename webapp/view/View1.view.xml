@@ -18,7 +18,7 @@
                             <IconTabFilter id="_IDGenIconTabFilter1" icon="sap-icon://car-rental" key="info">
                                 <Text id="_IDGenText7" text="Info content goes here ..." />
                                 <Carousel id="_IDGenCarousel1" > 
-                                <Table id="_idTable"
+                                <Table  id="_idTable"
                                         inset="false"
                                         items="{/readonly}">
                                         <columns>
@@ -100,9 +100,10 @@
                                 </Toolbar>
                             </IconTabFilter>
                             <IconTabFilter id="_IDGenIconTabFilter3" text="Data Binding" icon="sap-icon://activate" key="data"  count="11">
-                            <!--    <List id="_IDGenList1" headerText="DATA"  width="auto" items="{/readonly}">
+                                <List id="_IDGenList1" headerText="DATA" items="{/readonly}" >
+		
 
-                                </List>  -->
+                                </List>  
                             </IconTabFilter>
                         </items>
 	            </IconTabBar>       
