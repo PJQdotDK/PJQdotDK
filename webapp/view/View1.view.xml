@@ -1,67 +1,116 @@
 <mvc:View
     controllerName="dk.atp.sap.test.minapp3.controller.View1"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
     displayBlock="true"
     xmlns="sap.m" >  
+<!--<Shell id="shell">--> 
+    <App id="app"> 
+        <pages>  
+<!--        <MessagePage showHeader="false" description="More content to come" text="Stay tuned!" icon="sap-icon://home" />  -->   
+            <Page id="page" title="{i18n>title}"> 
+                <IconTabBar
+                        id="idIconTabBarMulti"
+                        expanded="{device>/isNoPhone}"
+                        class="sapUiResponsiveContentPadding">
+                        <items>
+                            <IconTabFilter id="_IDGenIconTabFilter1" icon="sap-icon://car-rental" key="info">
+                                <Text id="_IDGenText7" text="Info content goes here ..." />
+                                <Carousel id="_IDGenCarousel1" > 
+                                <Table id="_idTable"
+                                        inset="false"
+                                        items="{/readonly}">
+                                        <columns>
+                                            <Column id="_IDGenColumn1">
+                                                <Text id="_IDGenText1" text="IntAktart" />
+                                            </Column>
+                                            <Column id="_IDGenColumn2">
+                                                <Text id="_IDGenText2" text="Aktart" />
+                                            </Column>
+                                            <Column id="_IDGenColumn3">
+                                                <Text id="_IDGenText3" text="Beskrivelse" />
+                                            </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle" type="Navigation">
+                                                <cells>
+                                                    <Text id="_IDGenText4" text="{int_aktart}" wrapping="false" />
+                                                    <Text id="_IDGenText5" text="{aktart}" wrapping="false"/>
+                                                    <Text id="_IDGenText6" text="{beskrivelse}" />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table> 
+                                    <Image  id="_IDGenImage1" 
+                                            src="https://www.erclassics.com/media/catalog/product/cache/2/thumbnail/1920x/17f82f742ffe127f42dca9de82fb58b1/m/g/mg-mgb-cabriolet-1965-m7331-039.jpg" 
+                                            height="200px" width="300px"/>
 
-    <Carousel id="_IDGenCarousel1" >
-    <pages>
-<!--
-    <Shell id="shell">
-        <App id="app">        
-            <pages>
-            <MessagePage showHeader="false" description="More content to come" text="Stay tuned!" icon="sap-icon://home" /> 
-                <Page id="page" title="{i18n>title}">         -->     
-                
-                <Image  id="_IDGenImage1" 
-                        src="https://www.erclassics.com/media/catalog/product/cache/2/thumbnail/1920x/17f82f742ffe127f42dca9de82fb58b1/m/g/mg-mgb-cabriolet-1965-m7331-039.jpg" 
-                        height="200px" width="300px"/>
-
-                <Image  id="_IDGenImage2" 
-                        src="https://www.erclassics.com/media/catalog/product/cache/2/thumbnail/1920x/17f82f742ffe127f42dca9de82fb58b1/m/g/mg-mgb-cabriolet-1965-m7331-039.jpg" 
-                        height="200px" width="300px"/> 
-
-               <Table id="_idTable"
-                    inset="false"
-                    items="{/readonly}">
-                    <columns>
-                        <Column id="_IDGenColumn1">
-                            <Text id="_IDGenText1" text="IntAktart" />
-                        </Column>
-                        <Column id="_IDGenColumn2">
-                            <Text id="_IDGenText2" text="Aktart" />
-                        </Column>
-                        <Column id="_IDGenColumn3">
-                            <Text id="_IDGenText3" text="Beskrivelse" />
-                        </Column>
-                    </columns>
-                    <items>
-                        <ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle" type="Navigation">
-                            <cells>
-                                <Text id="_IDGenText4" text="{int_aktart}" wrapping="false" />
-                                <Text id="_IDGenText5" text="{aktart}" wrapping="false"/>
-                                <Text id="_IDGenText6" text="{beskrivelse}" />
-                            </cells>
-                        </ColumnListItem>
-                    </items>
-                </Table> 
-<!--                </Page>    
-            </pages>
-        </App>
-    </Shell> -->
-        </pages>
-        
-    </Carousel>
+                                    <Image  id="_IDGenImage2" 
+                                            src="https://www.erclassics.com/media/catalog/product/cache/2/thumbnail/1920x/17f82f742ffe127f42dca9de82fb58b1/m/g/mg-mgb-cabriolet-1965-m7331-039.jpg" 
+                                            height="200px" width="300px"/>         
+                                </Carousel>
     
-    <Button id="_IDGenButton1"  
-        text="Say Hello" 
-        press="onShowHello"/> 
-    <Input  id="productInput"
-			value="{View1Model>/int_aktart}"
-			description="Input her {int_aktart}" 
-            width="60%" >
-	</Input> 
+                                <Button id="_IDGenButton1"  
+                                    text="Say Hello" 
+                                    press="onShowHello"/> 
+                                <Input  id="productInput"
+                                        value="{/readonly/Beskrivelse/1}"
+                                        description="Input her {/readonly/Beskrivelse/1}" 
+                                        valueLiveUpdate="true"
+                                        width="60%" >
+                                </Input>    
+                            </IconTabFilter>
+                            <IconTabFilter id="_IDGenIconTabFilter2" icon="sap-icon://addresses" key="attachments" count="3">
+                                <Text id="_IDGenText8" text="Attachments go here ..." />
+                                <MessageStrip id="_IDGenMessageStrip1"
+                                    text="Warning with default icon and close button:"
+                                    type="Warning"
+                                    showIcon="true"
+                                    showCloseButton="true"
+                                    class="sapUiMediumMarginBottom">
+                                </MessageStrip>
+                                <f:SimpleForm id="SimpleFormChange354"
+                                    editable="true"
+                                    class="editableForm"
+                                    title="Address">
+                                    <f:content>
+                                        <Label id="_IDGenLabel1" text="Name" />
+                                        <Input id="name" value="{SupplierName}" />
+                                        <Label id="_IDGenLabel2" text="Street/No." />
+                                        <Input id="_IDGenInput1" value="{Street}" />
+                                        <Input id="_IDGenInput2" value="{HouseNumber}" />
+                                        <Label id="_IDGenLabel3" text="ZIP Code/City" />
+                                        <Input id="_IDGenInput3" value="{ZIPCode}"/>
+                                        <Input id="_IDGenInput4" value="{City}" />
+                                        <Label id="_IDGenLabel4" text="Country" />
+                                        <Select id="country" selectedKey="{Country}">
+                                            <items>
+                                                <core:Item id="_IDGenItem1" text="England" key="England"/>
+                                                <core:Item id="_IDGenItem2" text="Germany" key="Germany"/>
+                                                <core:Item id="_IDGenItem3" text="USA" key="USA"/>
+                                            </items>
+                                        </Select>
+                                    </f:content>
+                                </f:SimpleForm>
+                                <Toolbar class="sapUiMediumMarginTop" id="toolbar1">
+                                    <ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+                                    <Button id="_IDGenButton2" text="Create" icon="sap-icon://create"/>
+                                    <Button id="_IDGenButton3" text="Approve" icon="sap-icon://accept"/>
+                                </Toolbar>
+                            </IconTabFilter>
+                            <IconTabFilter id="_IDGenIconTabFilter3" text="Data Binding" icon="sap-icon://activate" key="data"  count="11">
+                            <!--    <List id="_IDGenList1" headerText="DATA"  width="auto" items="{/readonly}">
 
+                                </List>  -->
+                            </IconTabFilter>
+                        </items>
+	            </IconTabBar>       
+
+            </Page>    
+        </pages>
+    </App>
+<!--    </Shell>-->
 </mvc:View>
 
 
