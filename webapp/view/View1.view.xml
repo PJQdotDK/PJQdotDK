@@ -5,7 +5,7 @@
     xmlns:f="sap.ui.layout.form"
     displayBlock="true"
     xmlns="sap.m" >  
-<!--<Shell id="shell">--> 
+<!--<Shell id="shell">-->
     <App id="app"> 
         <pages>  
 <!--        <MessagePage showHeader="false" description="More content to come" text="Stay tuned!" icon="sap-icon://home" />  -->   
@@ -16,7 +16,15 @@
                         class="sapUiResponsiveContentPadding">
                         <items>
                             <IconTabFilter id="_IDGenIconTabFilter1" icon="sap-icon://car-rental" key="info">
-                                <Text id="_IDGenText7" text="Info content goes here ..." />
+                                <Button id="_IDGenButton1"  
+                                    text="Say Hello" 
+                                    press="onShowHello"/> 
+                                <Input  id="productInput"
+                                        value="{beskrivelse/1}"
+                                        description="Input her {beskrivelse/1}" 
+                                        valueLiveUpdate="true"
+                                        width="60%" >
+                                </Input>    
                                 <Carousel id="_IDGenCarousel1" > 
                                 <Table  id="_idTable"
                                         inset="false"
@@ -48,21 +56,10 @@
 
                                     <Image  id="_IDGenImage2" 
                                             src="https://www.erclassics.com/media/catalog/product/cache/2/thumbnail/1920x/17f82f742ffe127f42dca9de82fb58b1/m/g/mg-mgb-cabriolet-1965-m7331-039.jpg" 
-                                            height="200px" width="300px"/>         
-                                </Carousel>
-    
-                                <Button id="_IDGenButton1"  
-                                    text="Say Hello" 
-                                    press="onShowHello"/> 
-                                <Input  id="productInput"
-                                        value="{/readonly/Beskrivelse/1}"
-                                        description="Input her {/readonly/Beskrivelse/1}" 
-                                        valueLiveUpdate="true"
-                                        width="60%" >
-                                </Input>    
+                                            height="400px" width="500px"/>         
+                                </Carousel> 
                             </IconTabFilter>
-                            <IconTabFilter id="_IDGenIconTabFilter2" icon="sap-icon://addresses" key="attachments" count="3">
-                                <Text id="_IDGenText8" text="Attachments go here ..." />
+                            <IconTabFilter id="_IDGenIconTabFilter2" icon="sap-icon://addresses" key="attachments" >
                                 <MessageStrip id="_IDGenMessageStrip1"
                                     text="Warning with default icon and close button:"
                                     type="Warning"
@@ -100,14 +97,64 @@
                                 </Toolbar>
                             </IconTabFilter>
                             <IconTabFilter id="_IDGenIconTabFilter3" text="Data Binding" icon="sap-icon://activate" key="data"  count="11">
-                                <List id="_IDGenList1" headerText="DATA" items="{/readonly}" >
-		
-
-                                </List>  
+                                <Text id="_IDGenText8" text="Grouping, Sorting + Filtering ..." />
+                                <Table  id="_idTable2"
+                                        inset="false"
+                                        width="auto"
+                                        items="{
+                                                path: '/readonly' ,
+                                                sorter : {
+                                                    path: 'beskrivelse',
+                                                    group: true
+                                                }
+                                            }"
+                                        growing="true"
+                                        growingThreshold="5"
+                                        growingScrollToLoad="false">
+                                        <columns>
+                                            <Column id="_IDGenColumn11">
+                                                <Text id="_IDGenText11" text="IntAktart" />
+                                            </Column>
+                                            <Column id="_IDGenColumn12">
+                                                <Text id="_IDGenText12" text="Aktart" />
+                                            </Column>
+                                            <Column id="_IDGenColumn13">
+                                                <Text id="_IDGenText13" text="Beskrivelse" />
+                                            </Column>
+                                            <Column id="_IDGenColumn14">
+                                                <Text id="_IDGenText14" text="Opretter" />
+                                            </Column>
+                                            <Column id="_IDGenColumn15">
+                                                <Text id="_IDGenText16" text="Dato" />
+                                            </Column>
+                                        </columns>
+                                        <headerToolbar>
+                                            <Toolbar>
+                                               <Title text="Search CDS OData v2"/>
+                                               <ToolbarSpacer/>
+                                               <SearchField width="50%" search="onFilterItems"/>
+                                            </Toolbar>
+                                        </headerToolbar>
+                                        <items>
+                                            <ColumnListItem id="_IDGenColumnListItem11" vAlign="Middle" type="Navigation">
+                                                <cells>
+                                                    <Text id="_IDGenText17" text="{int_aktart}" wrapping="false" />
+                                                    <Text id="_IDGenText18" text="{aktart}" wrapping="false"/>
+                                                    <Text id="_IDGenText19" text="{beskrivelse}" wrapping="false" />
+                                                    <Text id="_IDGenText20" text="{opr_af}" wrapping="false"/>
+                                                    <Text id="_IDGenText21" text="{opr_dato}" />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                    <Panel id="DetailsPanel" 
+                                           headerText="Details"
+                                           visible="false">
+                                               
+                                    </Panel>
                             </IconTabFilter>
                         </items>
-	            </IconTabBar>       
-
+	            </IconTabBar> 
             </Page>    
         </pages>
     </App>
