@@ -3,6 +3,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
     displayBlock="true"
     xmlns="sap.m" >  
 <!--<Shell id="shell">-->
@@ -110,7 +111,9 @@
                                             }"
                                         growing="true"
                                         growingThreshold="5"
-                                        growingScrollToLoad="false">
+                                        growingScrollToLoad="false"
+                                        mode="SingleSelectMaster"
+                                        selectionChange="onItemSelected">
                                         <columns>
                                             <Column id="_IDGenColumn11">
                                                 <Text id="_IDGenText11" text="IntAktart" />
@@ -129,10 +132,10 @@
                                             </Column>
                                         </columns>
                                         <headerToolbar>
-                                            <Toolbar>
-                                               <Title text="Search CDS OData v2"/>
-                                               <ToolbarSpacer/>
-                                               <SearchField width="50%" search="onFilterItems"/>
+                                            <Toolbar id="_IDGenToolbar1">
+                                               <Title id="_IDGenTitle1" text="Search CDS OData v2"/>
+                                               <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+                                               <SearchField id="_IDGenSearchField1" width="50%" search="onFilterItems"/>
                                             </Toolbar>
                                         </headerToolbar>
                                         <items>
@@ -142,15 +145,21 @@
                                                     <Text id="_IDGenText18" text="{aktart}" wrapping="false"/>
                                                     <Text id="_IDGenText19" text="{beskrivelse}" wrapping="false" />
                                                     <Text id="_IDGenText20" text="{opr_af}" wrapping="false"/>
-                                                    <Text id="_IDGenText21" text="{opr_dato}" />
+                                                    <Text id="_IDGenText21" text="{path: 'opr_dato', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', strictParsing: true , UTC: true}}"/>
                                                 </cells>
                                             </ColumnListItem>
                                         </items>
                                     </Table>
                                     <Panel id="DetailsPanel" 
-                                           headerText="Details"
+                                           headerText="Detailinfo"
                                            visible="false">
-                                               
+                                        <l:Grid id="_IDGenGrid1">
+                                            <Text id="_IDGenText22" text="Status: {status}"/>
+                                            <Text id="_IDGenText25" text="Fra: {path: 'datab', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', strictParsing: true , UTC: true}}"/>
+                                            <Text id="_IDGenText26" text="Til: {path: 'datbi', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', strictParsing: true , UTC: true}}"/>
+                                            <Text id="_IDGenText23" text="Godkender: {godk_af}" />
+                                            <Text id="_IDGenText24" text="Godkendt dato: {path: 'godk_dato', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', strictParsing: true , UTC: true}}"/>
+                                        </l:Grid>
                                     </Panel>
                             </IconTabFilter>
                         </items>

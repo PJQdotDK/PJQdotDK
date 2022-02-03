@@ -13,7 +13,7 @@ sap.ui.define([
                 sap.m.MessageToast.show("This message should appear in the message toast");
              },
              
-             onFilterItems: function (oEvent) { 
+            onFilterItems: function (oEvent) { 
                 var aFilter = [],
                 sQuery = oEvent.getParameter("query"),
                 oList = this.getView().byId("_idTable2"),
@@ -23,6 +23,15 @@ sap.ui.define([
                 }
                 oBinding.filter(aFilter);    
              },
+
+            onItemSelected: function (oEvent) { 
+                var oSelectedItem = oEvent.getParameter("listItem");
+                var oContext = oSelectedItem.getBindingContext();
+                var sPath = oContext.getPath();
+                var oPanel = this.byId("DetailsPanel");
+                oPanel.bindElement({path: sPath });
+                oPanel.setVisible(true);
+            },
 
         });
     });
