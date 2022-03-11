@@ -4,6 +4,7 @@
     xmlns:core="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
     xmlns:l="sap.ui.layout"
+    
     displayBlock="true"
     xmlns="sap.m" >  
 <!--<Shell id="shell">-->
@@ -16,9 +17,10 @@
                         expanded="{device>/isNoPhone}"
                         class="sapUiResponsiveContentPadding">
                         <items>
-                            <IconTabFilter id="_IDGenIconTabFilter1" icon="sap-icon://car-rental" key="info">
+                            <IconTabFilter id="_IDGenIconTabFilter1" icon="sap-icon://car-rental" iconColor="Negative"   key="info">
                                 <Button id="_IDGenButton1"  
                                     text="Say Hello" 
+                                    icon="sap-icon://email"
                                     press="onShowHello"/> 
                                 <Input  id="productInput"
                                         value="{beskrivelse/1}"
@@ -96,6 +98,20 @@
                                     <Button id="_IDGenButton2" text="Create" icon="sap-icon://create"/>
                                     <Button id="_IDGenButton3" text="Approve" icon="sap-icon://accept"/>
                                 </Toolbar>
+
+<!--                                <wt:ProductRate id="_IDGenProductRating1" class="sapUiSmallMarginBeginEnd" change="onRatingChange"/> -->
+
+                                <Panel id="DetailsPanel2" 
+                                        headerText="Map" 
+                                        class="sapUiResponsiveMargin" 
+                                        width="auto">
+                                    <Image id="_IDGenImage3"  class="sapUiSmallMargin" 
+                                            width="500px" 
+                                            height="300px" 
+                                            src="{  parts: [ 'Mortonsvej 5', '2800', 'Lyngby', 'Denmark' ], 
+                                                    formatter: '.formatMapUrl' }" />
+                                </Panel>
+
                             </IconTabFilter>
                             <IconTabFilter id="_IDGenIconTabFilter3" text="Data Binding" icon="sap-icon://activate" key="data"  count="11">
                                 <Text id="_IDGenText8" text="Grouping, Sorting + Filtering ..." />
@@ -141,11 +157,11 @@
                                         <items>
                                             <ColumnListItem id="_IDGenColumnListItem11" vAlign="Middle" type="Navigation">
                                                 <cells>
-                                                    <Text id="_IDGenText17" text="{int_aktart}" wrapping="false" />
-                                                    <Text id="_IDGenText18" text="{aktart}" wrapping="false"/>
-                                                    <Text id="_IDGenText19" text="{beskrivelse}" wrapping="false" />
-                                                    <Text id="_IDGenText20" text="{opr_af}" wrapping="false"/>
-                                                    <Text id="_IDGenText21" text="{path: 'opr_dato', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', strictParsing: true , UTC: true}}"/>
+                                                    <Text id="_IDGenText17" text="{int_aktart}"  width="8em" />
+                                                    <Text id="_IDGenText18" text="{aktart}" width="8em"/>
+                                                    <Text id="_IDGenText19" text="{beskrivelse}"  width="12em" />
+                                                    <Text id="_IDGenText20" text="{opr_af}" wrapping="false" width="12em"/>
+                                                    <Text id="_IDGenText21" text="{path: 'opr_dato', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', strictParsing: true , UTC: true}}" width="12em"/>
                                                 </cells>
                                             </ColumnListItem>
                                         </items>
@@ -154,9 +170,9 @@
                                            headerText="Detailinfo"
                                            visible="false">
                                         <l:Grid id="_IDGenGrid1">
-                                            <Text id="_IDGenText22" text="Status: {status}"/>
-                                            <Text id="_IDGenText25" text="Fra: {path: 'datab', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', strictParsing: true , UTC: true}}"/>
-                                            <Text id="_IDGenText26" text="Til: {path: 'datbi', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', strictParsing: true , UTC: true}}"/>
+                                            <Text id="_IDGenText22" text="Status: {status}" width="5em"/>
+                                            <Text id="_IDGenText25" text="Fra: {path: 'datab', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', strictParsing: true , UTC: true}}
+                                            til: {path: 'datbi', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', strictParsing: true , UTC: true}}"/>
                                             <Text id="_IDGenText23" text="Godkender: {godk_af}" />
                                             <Text id="_IDGenText24" text="Godkendt dato: {path: 'godk_dato', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', strictParsing: true , UTC: true}}"/>
                                         </l:Grid>

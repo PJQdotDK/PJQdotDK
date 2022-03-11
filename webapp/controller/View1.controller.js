@@ -32,6 +32,10 @@ sap.ui.define([
                 oPanel.bindElement({path: sPath });
                 oPanel.setVisible(true);
             },
-
+            
+            formatMapUrl: function (sStreet, sZip, sCity, sCountry) {
+                return "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=500x300&markers="
+                + jQuery.sap.encodeURL(sStreet + ", " + sZip +  " " + sCity + ", " + sCountry);
+		    },
         });
     });
